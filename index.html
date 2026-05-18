@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VALTERRA · Ukraine Export Flow · Season 25/26</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --navy:  #1F3059;
+  --cream: #F2F2F0;
+  --slate: #7A8089;
+  --steel: #6B96C3;
+  --n08:   rgba(31,48,89,0.08);
+  --n20:   rgba(31,48,89,0.20);
+  --n45:   rgba(31,48,89,0.45);
+  --n70:   rgba(31,48,89,0.70);
+  --div:   rgba(31,48,89,0.10);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--navy); padding: 24px 20px 64px; }
+.page { max-width: 1160px; margin: 0 auto; }
+
+/* NAV */
+.nav { background: var(--navy); border-radius: 4px; padding: 16px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
+.nav-right { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.nav-meta { color: var(--slate); font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; line-height: 1.8; text-align: right; }
+
+/* LANG */
+.lang-toggle { display: flex; border: 1px solid rgba(242,242,240,0.25); border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+.lang-btn { padding: 8px 18px; font-size: 11px; font-weight: 500; letter-spacing: 0.10em; cursor: pointer; border: none; background: transparent; color: var(--slate); font-family: 'Plus Jakarta Sans', sans-serif; transition: all 150ms; min-width: 52px; -webkit-tap-highlight-color: transparent; }
+.lang-btn.on { background: var(--cream); color: var(--navy); }
+
+/* HERO */
+.hero { padding-left: 24px; border-left: 2px solid var(--navy); margin-bottom: 48px; }
+.caps-label { font-size: 9px; font-weight: 400; letter-spacing: 0.14em; color: var(--slate); text-transform: uppercase; margin-bottom: 10px; }
+.hero-number { font-size: 68px; font-weight: 500; color: var(--navy); letter-spacing: -0.025em; line-height: 1; margin-bottom: 10px; }
+.hero-unit { font-size: 28px; font-weight: 400; color: var(--slate); }
+.hero-sub { font-size: 14px; font-weight: 400; color: var(--n70); margin-bottom: 6px; line-height: 1.6; }
+.hero-note { font-size: 12px; font-weight: 400; color: var(--slate); line-height: 1.6; }
+
+/* KPI */
+.kpi-strip { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--div); border: 1px solid var(--div); border-radius: 4px; overflow: hidden; margin-bottom: 56px; }
+.kpi { background: var(--cream); padding: 18px 14px; }
+.kpi-lbl { font-size: 8px; font-weight: 400; letter-spacing: 0.12em; color: var(--slate); text-transform: uppercase; margin-bottom: 8px; }
+.kpi-val { font-size: 26px; font-weight: 500; color: var(--navy); letter-spacing: -0.02em; line-height: 1; margin-bottom: 5px; }
+.kpi-delta { font-size: 10px; color: var(--slate); line-height: 1.4; }
+
+/* SECTION */
+.section { margin-bottom: 56px; }
+.section-label { font-size: 9px; font-weight: 400; letter-spacing: 0.14em; color: var(--slate); text-transform: uppercase; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--div); }
+
+/* CARD */
+.card { background: var(--cream); border: 1px solid var(--div); border-radius: 4px; padding: 22px 26px; transition: background 200ms ease; }
+.card:hover { background: #E8E8E5; }
+.card-title { font-size: 10px; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase; color: var(--navy); margin-bottom: 18px; }
+
+/* GRID */
+.g-6-4 { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+
+/* CHART */
+.cw { position: relative; width: 100%; }
+
+/* TABS */
+.tabs { display: inline-flex; flex-wrap: wrap; gap: 0; margin-bottom: 20px; border: 1px solid var(--div); border-radius: 4px; overflow: hidden; }
+.tab { padding: 7px 12px; font-size: 9px; font-weight: 400; letter-spacing: 0.10em; cursor: pointer; border: none; border-right: 1px solid var(--div); background: transparent; color: var(--slate); font-family: 'Plus Jakarta Sans', sans-serif; transition: all 150ms; -webkit-tap-highlight-color: transparent; }
+.tab:last-child { border-right: none; }
+.tab:hover { background: var(--n08); color: var(--navy); }
+.tab.on { background: var(--navy); color: var(--cream); }
+
+/* LEGEND */
+.legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--div); }
+.leg-item { display: flex; align-items: center; gap: 7px; font-size: 10px; color: var(--slate); }
+.leg-line { width: 20px; height: 2px; flex-shrink: 0; }
+
+/* NOTE */
+.note { font-size: 10px; color: var(--n70); margin-top: 12px; line-height: 1.7; padding-top: 12px; border-top: 1px solid var(--div); }
+
+/* TRANSPORT */
+.transp-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--div); }
+.transp-row:last-child { border-bottom: none; }
+.transp-lbl { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); min-width: 100px; }
+.transp-bar-bg { flex: 1; background: var(--n08); border-radius: 2px; height: 5px; overflow: hidden; }
+.transp-bar-fill { height: 100%; background: var(--navy); border-radius: 2px; }
+.transp-pct { font-size: 12px; font-weight: 500; color: var(--navy); min-width: 28px; text-align: right; }
+.transp-vol { font-size: 10px; color: var(--slate); min-width: 80px; text-align: right; }
+
+/* CARRY */
+.carry-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--div); border: 1px solid var(--div); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
+.carry-card { background: var(--cream); padding: 16px; }
+.carry-crop { font-size: 9px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; }
+.carry-bar { width: 100%; height: 2px; background: var(--navy); border-radius: 1px; margin-bottom: 10px; }
+.carry-prod { font-size: 17px; font-weight: 500; color: var(--navy); letter-spacing: -0.02em; line-height: 1; margin-bottom: 2px; }
+.carry-unit { font-size: 9px; font-weight: 400; color: var(--slate); }
+.carry-row { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--div); }
+.carry-row:last-of-type { border-bottom: none; }
+.carry-key { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); }
+.carry-num { font-size: 11px; font-weight: 500; color: var(--navy); }
+.carry-delta { font-size: 9px; color: var(--slate); margin-top: 8px; }
+.carry-src { font-size: 8px; color: var(--n45); margin-top: 4px; }
+
+/* RISK styles removed */
+
+/* NEWS */
+.news-item { display: flex; align-items: flex-start; padding: 14px 22px; border-bottom: 1px solid var(--div); text-decoration: none; transition: background 180ms ease; }
+.news-item:last-child { border-bottom: none; }
+.news-item:hover { background: #E8E8E5; }
+.news-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--navy); padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; margin-right: 14px; min-width: 84px; text-align: center; }
+.news-tag.warn   { background: var(--n45); }
+.news-tag.good   { background: rgba(31,48,89,0.65); }
+.news-tag.signal { background: var(--steel); }
+.news-body { flex: 1; }
+.news-headline { font-size: 12px; font-weight: 500; color: var(--navy); line-height: 1.5; margin-bottom: 3px; }
+.news-meta { font-size: 10px; color: var(--slate); }
+.news-arrow { font-size: 14px; color: var(--n20); flex-shrink: 0; margin-left: 12px; margin-top: 1px; transition: color 180ms; }
+.news-item:hover .news-arrow { color: var(--navy); }
+
+/* SEP */
+.sep { height: 1px; background: var(--div); margin: 16px 0; }
+
+/* FOOTER */
+.footer { background: var(--navy); border-radius: 4px; padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; margin-top: 56px; gap: 28px; flex-wrap: wrap; }
+.footer-src { font-size: 9px; color: var(--slate); letter-spacing: 0.04em; line-height: 1.8; flex: 1; }
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .g-6-4 { grid-template-columns: 1fr; }
+  .kpi-strip  { grid-template-columns: repeat(3, 1fr); }
+  .carry-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero-number { font-size: 52px; }
+}
+@media (max-width: 600px) {
+  body { padding: 14px 14px 48px; }
+  .nav { padding: 14px 16px; }
+  .nav-meta { display: none; }
+  .kpi-strip  { grid-template-columns: repeat(2, 1fr); }
+  .carry-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-number { font-size: 42px; }
+  .tab { padding: 7px 8px; font-size: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://www.linkedin.com/in/valerii-liulchenko-13643032/" target="_blank" rel="noopener" style="display:flex;align-items:center;text-decoration:none;opacity:1;transition:opacity 200ms;" onmouseover="this.style.opacity='0.75'" onmouseout="this.style.opacity='1'">
+    <svg width="140" height="34" viewBox="0 0 592 143" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M140.128 92.5711L122.912 44.891H129.632L144.224 86.8111H142.88L157.472 44.891H164.192L147.04 92.5711H140.128ZM178.1 92.5711L195.188 44.891H202.612L219.7 92.5711H212.98L209.076 81.3711H188.724L184.82 92.5711H178.1ZM190.708 75.6111H207.092L198.004 49.4351H199.796L190.708 75.6111ZM241.708 92.5711V44.891H247.98V86.8111H268.908V92.5711H241.708ZM295.465 92.5711V50.6511H282.537V44.891H314.537V50.6511H301.801V92.5711H295.465ZM336.583 92.5711V44.891H367.623V50.6511H342.855V65.7551H366.343V71.5151H342.855V86.8111H367.623V92.5711H336.583ZM391.395 92.5711V44.891H408.227C411.385 44.891 414.158 45.4884 416.547 46.6831C418.937 47.8777 420.793 49.5844 422.115 51.8031C423.481 54.0217 424.163 56.6244 424.163 59.611C424.163 62.9817 423.31 65.8404 421.603 68.1871C419.897 70.5337 417.593 72.2191 414.691 73.2431L425.763 92.5711H418.467L406.819 71.8991L410.979 74.3311H397.667V92.5711H391.395ZM397.667 68.5711H408.419C410.297 68.5711 411.939 68.2084 413.347 67.4831C414.755 66.7577 415.843 65.7124 416.611 64.3471C417.422 62.9817 417.827 61.4031 417.827 59.611C417.827 57.7764 417.422 56.1977 416.611 54.875C415.843 53.5097 414.755 52.4644 413.347 51.7391C411.939 51.0137 410.297 50.6511 408.419 50.6511H397.667V68.5711ZM448.895 92.5711V44.891H465.727C468.885 44.891 471.658 45.4884 474.047 46.6831C476.437 47.8777 478.293 49.5844 479.615 51.8031C480.981 54.0217 481.663 56.6244 481.663 59.611C481.663 62.9817 480.81 65.8404 479.103 68.1871C477.397 70.5337 475.093 72.2191 472.191 73.2431L483.263 92.5711H475.967L464.319 71.8991L468.479 74.3311H455.167V92.5711H448.895ZM455.167 68.5711H465.919C467.797 68.5711 469.439 68.2084 470.847 67.4831C472.255 66.7577 473.343 65.7124 474.111 64.3471C474.922 62.9817 475.327 61.4031 475.327 59.611C475.327 57.7764 474.922 56.1977 474.111 54.875C473.343 53.5097 472.255 52.4644 470.847 51.7391C469.439 51.0137 467.797 50.6511 465.919 50.6511H455.167V68.5711ZM501.787 92.5711L518.875 44.891H526.299L543.387 92.5711H536.667L532.763 81.3711H512.411L508.507 92.5711H501.787ZM514.395 75.6111H530.779L521.691 49.4351H523.483L514.395 75.6111Z" fill="#F2F2F0"/>
+      <path d="M71.2085 44.9031V116.571L47.2085 92.5711V44.9031H71.2085ZM101.208 92.5711L77.2085 116.571V44.9011H101.208V92.5711Z" fill="#F2F2F0"/>
+    </svg>
+  </a>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn on" onclick="setLang('uk',this)">УКР</button>
+      <button class="lang-btn"    onclick="setLang('en',this)">ENG</button>
+    </div>
+    <div class="nav-meta">
+      <span class="t" data-uk="ЕКСПОРТ УКРАЇНИ · СЕЗОН 25/26" data-en="UKRAINE EXPORT FLOW · SEASON 25/26"></span><br>
+      <span class="t" data-uk="ПІК «DELIVERY CONTROL» ЄАІС · ДАНІ НА 15 ТРАВНЯ 2026" data-en="PIK «DELIVERY CONTROL» EAIS · DATA AS OF 15 MAY 2026"></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="caps-label"><span class="t" data-uk="Накопичений експорт · сезон 25/26 · липень 2025 — 15 травня 2026" data-en="Cumulative export · season 25/26 · July 2025 — 15 May 2026"></span></div>
+  <div class="hero-number">42,6 <span class="hero-unit"><span class="t" data-uk="млн т" data-en="MMT"></span></span></div>
+  <div class="hero-sub"><span class="t" data-uk="Зернові · олійні · продукти переробки · 10 культур · 10 повних міс. (лип–кві) + 15 трав." data-en="Grains · oilseeds · processed products · 10 crops · 10 full months (Jul–Apr) + 15 May"></span></div>
+  <div class="hero-note"><span class="t" data-uk="До 15 травня 2026: 42,6 млн т. Травень частковий — 2,3 млн т за 15 днів. Квітень рекордний: 5,2 млн т. Частка України в імпорті кукурудзи ЄС: 57% → 22,4% (S&P GTAS)." data-en="To 15 May 2026: 42.6 MMT. May partial — 2.3 MMT in 15 days. April record: 5.2 MMT. Ukraine EU corn import share: 57% → 22.4% (S&P GTAS)."></span></div>
+</div>
+
+<!-- KPI -->
+<div class="kpi-strip section">
+  <div class="kpi">
+    <div class="kpi-lbl"><span class="t" data-uk="Пшениця · до 15 трав." data-en="Wheat · to 15 May"></span></div>
+    <div class="kpi-val">11 610</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 15 138 · −23%" data-en="'000 t · 24/25 full: 15 138 · −23%"></span></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl"><span class="t" data-uk="Кукурудза · до 15 трав." data-en="Corn · to 15 May"></span></div>
+    <div class="kpi-val">17 911</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 21 267 · −16%" data-en="'000 t · 24/25 full: 21 267 · −16%"></span></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl"><span class="t" data-uk="Соняшн. олія · до 15 трав." data-en="Sunfl. oil · to 15 May"></span></div>
+    <div class="kpi-val">3 661</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 4 728 · −23%" data-en="'000 t · 24/25 full: 4 728 · −23%"></span></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl"><span class="t" data-uk="Шрот · до 15 трав." data-en="Meal · to 15 May"></span></div>
+    <div class="kpi-val">3 255</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 3 543 · −8%" data-en="'000 t · 24/25 full: 3 543 · −8%"></span></div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-lbl"><span class="t" data-uk="Ячмінь · до 15 трав." data-en="Barley · to 15 May"></span></div>
+    <div class="kpi-val">1 482</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 2 250 · −34%" data-en="'000 t · 24/25 full: 2 250 · −34%"></span></div>
+  </div>
+</div>
+
+<!-- LINE CHART -->
+<div class="section">
+  <div class="section-label"><span class="t" data-uk="Помісячна динаміка експорту — три сезони · тис. тонн" data-en="Monthly export dynamics — three seasons · thousand tonnes"></span></div>
+  <div class="card" style="padding:24px 26px;">
+    <div class="tabs" id="cTabs">
+      <button class="tab on" onclick="sw('total',this)"><span class="t" data-uk="ВСЬОГО"    data-en="TOTAL"></span></button>
+      <button class="tab"    onclick="sw('wheat',this)"><span class="t" data-uk="ПШЕНИЦЯ"   data-en="WHEAT"></span></button>
+      <button class="tab"    onclick="sw('corn',this)"><span class="t"  data-uk="КУКУРУДЗА" data-en="CORN"></span></button>
+      <button class="tab"    onclick="sw('oil',this)"><span class="t"   data-uk="СОН. ОЛІЯ" data-en="SFL. OIL"></span></button>
+      <button class="tab"    onclick="sw('rape',this)"><span class="t"  data-uk="РІПАК"     data-en="RAPE"></span></button>
+      <button class="tab"    onclick="sw('soy',this)"><span class="t"   data-uk="СОЯ"       data-en="SOY"></span></button>
+      <button class="tab"    onclick="sw('barley',this)"><span class="t" data-uk="ЯЧМІНЬ"   data-en="BARLEY"></span></button>
+      <button class="tab"    onclick="sw('meal',this)"><span class="t"  data-uk="ШРОТ"      data-en="MEAL"></span></button>
+    </div>
+    <div class="cw" style="height:280px;"><canvas id="mainChart"></canvas></div>
+    <div class="legend">
+      <span class="leg-item"><span class="leg-line" style="background:var(--n20);"></span><span class="t" data-uk="23/24 (повний сезон, лип–чер)" data-en="23/24 (full season, Jul–Jun)"></span></span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--n45);"></span><span class="t" data-uk="24/25 (повний сезон, лип–чер)" data-en="24/25 (full season, Jul–Jun)"></span></span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--navy);"></span><span class="t" data-uk="25/26 · повні місяці лип–кві (40,3 млн т) · +15 трав. 2,3 млн т" data-en="25/26 · full months Jul–Apr (40.3 MMT) · +15 May 2.3 MMT"></span></span>
+    </div>
+    <div class="note" id="chartNote"></div>
+  </div>
+</div>
+
+<!-- BAR + TRANSPORT -->
+<div class="section">
+  <div class="section-label"><span class="t" data-uk="Підсумки за культурами та транспортом" data-en="Season totals by crop and transport mode"></span></div>
+  <div class="g-6-4">
+    <div class="card">
+      <div class="card-title"><span class="t" data-uk="Підсумок за культурами · три сезони · тис. т" data-en="Crop totals · three seasons · '000 t"></span></div>
+      <div class="cw" style="height:260px;"><canvas id="barComp"></canvas></div>
+      <div class="legend">
+        <span class="leg-item"><span class="leg-line" style="background:var(--n20);"></span>23/24</span>
+        <span class="leg-item"><span class="leg-line" style="background:var(--n45);"></span>24/25</span>
+        <span class="leg-item"><span class="leg-line" style="background:var(--navy);"></span>25/26*</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="t" data-uk="Транспорт · сезон 25/26" data-en="Transport split · season 25/26"></span></div>
+      <div id="transpRows"></div>
+      <div class="sep"></div>
+      <div class="cw" style="height:150px;"><canvas id="transpDonut"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<div class="section">
+  <div class="section-label"><span class="t" data-uk="Ринкові сигнали · Свіжі новини · 1 травня 2026" data-en="Market intelligence · Latest news · 1 May 2026"></span></div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div id="newsFeed"></div>
+  </div>
+</div>
+
+<!-- CARRY-OVER -->
+<div class="section">
+  <div class="section-label"><span class="t" data-uk="Прогноз перехідних залишків · кінець сезону 25/26" data-en="Ending stocks forecast · end of season 25/26"></span></div>
+  <div class="carry-grid" id="carryCards"></div>
+  <div>
+    <div class="card">
+      <div class="card-title"><span class="t" data-uk="Балансовий розрахунок · млн т" data-en="Supply-demand balance · MMT"></span></div>
+      <div class="cw" style="height:210px;"><canvas id="balChart"></canvas></div>
+      <div class="legend" style="margin-top:14px;">
+        <span class="leg-item"><span class="leg-line" style="background:var(--navy);"></span><span class="t" data-uk="Виробництво" data-en="Production"></span></span>
+        <span class="leg-item"><span class="leg-line" style="background:var(--n45);"></span><span class="t" data-uk="Експорт (прогноз)" data-en="Export (forecast)"></span></span>
+        <span class="leg-item"><span class="leg-line" style="background:var(--n20);"></span><span class="t" data-uk="Залишок" data-en="Ending stocks"></span></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <svg width="110" height="27" viewBox="0 0 592 143" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
+    <path d="M140.128 92.5711L122.912 44.891H129.632L144.224 86.8111H142.88L157.472 44.891H164.192L147.04 92.5711H140.128ZM178.1 92.5711L195.188 44.891H202.612L219.7 92.5711H212.98L209.076 81.3711H188.724L184.82 92.5711H178.1ZM190.708 75.6111H207.092L198.004 49.4351H199.796L190.708 75.6111ZM241.708 92.5711V44.891H247.98V86.8111H268.908V92.5711H241.708ZM295.465 92.5711V50.6511H282.537V44.891H314.537V50.6511H301.801V92.5711H295.465ZM336.583 92.5711V44.891H367.623V50.6511H342.855V65.7551H366.343V71.5151H342.855V86.8111H367.623V92.5711H336.583ZM391.395 92.5711V44.891H408.227C411.385 44.891 414.158 45.4884 416.547 46.6831C418.937 47.8777 420.793 49.5844 422.115 51.8031C423.481 54.0217 424.163 56.6244 424.163 59.611C424.163 62.9817 423.31 65.8404 421.603 68.1871C419.897 70.5337 417.593 72.2191 414.691 73.2431L425.763 92.5711H418.467L406.819 71.8991L410.979 74.3311H397.667V92.5711H391.395ZM397.667 68.5711H408.419C410.297 68.5711 411.939 68.2084 413.347 67.4831C414.755 66.7577 415.843 65.7124 416.611 64.3471C417.422 62.9817 417.827 61.4031 417.827 59.611C417.827 57.7764 417.422 56.1977 416.611 54.875C415.843 53.5097 414.755 52.4644 413.347 51.7391C411.939 51.0137 410.297 50.6511 408.419 50.6511H397.667V68.5711ZM448.895 92.5711V44.891H465.727C468.885 44.891 471.658 45.4884 474.047 46.6831C476.437 47.8777 478.293 49.5844 479.615 51.8031C480.981 54.0217 481.663 56.6244 481.663 59.611C481.663 62.9817 480.81 65.8404 479.103 68.1871C477.397 70.5337 475.093 72.2191 472.191 73.2431L483.263 92.5711H475.967L464.319 71.8991L468.479 74.3311H455.167V92.5711H448.895ZM455.167 68.5711H465.919C467.797 68.5711 469.439 68.2084 470.847 67.4831C472.255 66.7577 473.343 65.7124 474.111 64.3471C474.922 62.9817 475.327 61.4031 475.327 59.611C475.327 57.7764 474.922 56.1977 474.111 54.875C473.343 53.5097 472.255 52.4644 470.847 51.7391C469.439 51.0137 467.797 50.6511 465.919 50.6511H455.167V68.5711ZM501.787 92.5711L518.875 44.891H526.299L543.387 92.5711H536.667L532.763 81.3711H512.411L508.507 92.5711H501.787ZM514.395 75.6111H530.779L521.691 49.4351H523.483L514.395 75.6111Z" fill="#F2F2F0"/>
+    <path d="M71.2085 44.9031V116.571L47.2085 92.5711V44.9031H71.2085ZM101.208 92.5711L77.2085 116.571V44.9011H101.208V92.5711Z" fill="#F2F2F0"/>
+  </svg>
+  <div class="footer-src">
+    <span class="t"
+      data-uk="Джерела: ПІК «Delivery Control» ЄАІС — фактичний експорт до 15.05.2026 · Держстат України — фінальний врожай 2025 · УЗА (груд. 2025) · ASAP Agri / Latifundist · USDA WASDE квітень 2026 · APK-Inform · S&P GTAS / EU Commission. Всі дані у тис. тонн якщо не вказано інше."
+      data-en="Sources: PIK «Delivery Control» EAIS — actual exports to 15.05.2026 · Derzhstat Ukraine — final 2025 harvest · UZA (Dec 2025) · ASAP Agri / Latifundist · USDA WASDE April 2026 · APK-Inform · S&P GTAS / EU Commission. All figures in '000 tonnes unless stated."></span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const NAVY='#1F3059', SLATE='#7A8089', N20='rgba(31,48,89,0.20)', N45='rgba(31,48,89,0.45)', STEEL='#6B96C3';
+let lang='uk';
+
+function setLang(l,btn){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.t').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null)el.textContent=v;});
+  document.getElementById('chartNote').textContent=NOTES[currentKey][lang];
+  document.getElementById('transpRows').innerHTML=''; buildTransport();
+  document.getElementById('carryCards').innerHTML=''; buildCarry();
+  document.getElementById('newsFeed').innerHTML='';   buildNews();
+}
+
+const MUK=['Лип','Сер','Вер','Жов','Лис','Гру','Січ','Лют','Бер','Кві','Тра','Чер'];
+const MEN=['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun'];
+
+// Verified from CSV 30.04.2026
+const D={
+  total:  {s2324:[3388,3711,3635,4337,5457,7177,6364,7338,6992,7206,6714,5042],s2425:[4904,4763,4618,6012,5479,4753,4065,4364,4658,3729,4042,3091],s2526:[2906,3708,2843,3945,4430,4136,4133,4451,4523,5193]},
+  wheat:  {s2324:[841,1224,1273,1341,1131,1844,1504,2499,2001,1691,1645,908],  s2425:[1522,2244,2313,1647,1107,789,822,1164,1088,759,850,833],    s2526:[859,2048,1830,1505,958,619,449,658,803,1332]},
+  corn:   {s2324:[1099,877,628,1284,2330,3116,2931,2917,3138,3810,3550,2890],  s2425:[1413,646,526,1926,2598,2561,2253,2161,2203,1751,1998,1230], s2526:[550,230,61,1094,1871,2173,2693,2848,2503,2726]},
+  oil:    {s2324:[502,413,360,375,506,673,526,591,629,654,624,462],             s2425:[435,199,349,458,509,406,340,291,503,417,461,360],           s2526:[402,161,203,358,367,427,347,322,435,441]},
+  rape:   {s2324:[251,670,650,386,349,331,321,259,154,111,76,27],              s2425:[411,794,705,475,291,130,101,31,33,84,34,13],                s2526:[137,519,220,177,184,122,101,74,109,20]},
+  soy:    {s2324:[70,30,210,432,506,418,313,285,230,124,107,207],              s2425:[221,146,246,716,415,346,194,391,369,303,270,293],           s2526:[378,208,78,230,455,203,226,204,193,162]},
+  barley: {s2324:[352,147,120,54,181,251,290,206,333,233,209,82],              s2425:[635,469,228,350,157,128,62,74,56,47,41,2],                 s2526:[325,324,238,200,100,159,13,24,39,59]},
+  meal:   {s2324:[240,333,377,391,387,488,422,516,439,511,453,430],            s2425:[238,238,234,384,357,346,233,206,325,322,345,315],           s2526:[205,179,177,335,447,378,273,282,394,406]}
+};
+
+const NOTES={
+  total:  {uk:'ВСЬОГО: 40,3 млн т за 10 місяців. Квітень — 5,2 млн т, найкращий місяць сезону. Провал лип–вер через атаки на порти. Кукурудза компенсує з грудня, пшениця відновлюється в квітні.',en:'TOTAL: 40.3 MMT in 10 months. April — 5.2 MMT, strongest month. Jul–Sep slump due to port attacks. Corn compensates from December, wheat recovering in April.'},
+  wheat:  {uk:'ПШЕНИЦЯ: 11 060 тис. т (−27% до 24/25: 15 138). EU-квоти та конкуренція рос. зерна. USDA WASDE травень 2026: залишки підвищено до 3,93 млн т, врожай 26/27 — найменший за 3 роки. Прогноз експорту 25/26: 12,5 млн т.',en:'WHEAT: 11,060 kton (−27% vs 24/25: 15,138). EU quotas + Russian competition. USDA WASDE May 2026: ending stocks raised to 3.93 MMT, 26/27 crop forecast smallest in 3 years. Export forecast 25/26: 12.5 MMT.'},
+  corn:   {uk:'КУКУРУДЗА: 16 749 тис. т (−21% до 24/25). Квітень 2026 — 2 726 тис. т. Врожай 2025 — 31,5 млн т (+22%). Прогноз USDA 26/27: 26 млн т (+26%). Іспанія може повернутись через тарифи США.',en:'CORN: 16,749 kton (−21% vs 24/25). April 2026 — 2,726 kton. 2025 crop — 31.5 MMT (+22%). USDA 26/27 forecast: 26 MMT (+26%). Spain may return due to US tariffs.'},
+  oil:    {uk:'СОНЯШНИКОВА ОЛІЯ: 3 463 тис. т (−27% до 24/25: 4 728). Держстат: соняшник 2025 — 10,24 млн т (−7%). Залишки 1 квіт. — 2,6 млн т. Ціна квіт. $500–545/т — атипово для сезону.',en:'SUNFL. OIL: 3,463 kton (−27% vs 24/25: 4,728). Derzhstat: sunflower 2025 — 10.24 MMT (−7%). Stocks 1 Apr — 2.6 MMT. April price $500–545/t — atypical for season.'},
+  rape:   {uk:'РІПАК: 1 665 тис. т (−46% до 24/25: 3 103). Урожай 2025 — 3,3 млн т. Внутрішня переробка зростає через дефіцит соняшника. 26/27: площі +25%, виробництво 4 млн т.',en:'RAPESEED: 1,665 kton (−46% vs 24/25: 3,103). 2025 crop — 3.3 MMT. Domestic crushing growing due to sunflower deficit. 26/27: area +25%, production 4 MMT.'},
+  soy:    {uk:'СОЯ: 2 337 тис. т за 10 міс. Виробництво 2025 — ~5,6 млн т (площі скорочені на користь кукурудзи). Пік листопад — 455 тис. т.',en:'SOY: 2,337 kton in 10 months. 2025 production — ~5.6 MMT (acreage shifted to corn). November peak — 455 kton.'},
+  barley: {uk:'ЯЧМІНЬ: 1 482 тис. т (−34% до 24/25: 2 250). Різкий провал з січня: 13–39 тис. т vs 47–74 у 24/25. Покупці: Китай, Туреччина, Саудівська Аравія. 26/27: +133% до 4,2 млн т.',en:'BARLEY: 1,482 kton (−34% vs 24/25: 2,250). Sharp collapse from January: 13–39 kton vs 47–74 in 24/25. Buyers: China, Turkey, Saudi Arabia. 26/27: +133% to 4.2 MMT.'},
+  meal:   {uk:'ШРОТ: 3 075 тис. т (−13% до 24/25: 3 543). Листопад — 447 тис. т: рекорд серед трьох сезонів. Внутрішня переробка зростає. Відносно стабільний сегмент.',en:'MEAL: 3,075 kton (−13% vs 24/25: 3,543). November — 447 kton: record across 3 seasons. Domestic processing growing. Relatively stable segment.'}
+};
+
+// LINE CHART
+let currentKey='total';
+const opts={responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{backgroundColor:NAVY,titleFont:{family:'Plus Jakarta Sans',size:11},bodyFont:{family:'Plus Jakarta Sans',size:11},padding:10,callbacks:{label:v=>`${v.dataset.label}: ${(v.raw||0).toLocaleString()} тис. т`}}},
+  scales:{x:{grid:{display:false},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:10},maxRotation:0}},y:{grid:{color:'rgba(31,48,89,0.06)'},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:10},callback:v=>v.toLocaleString()}}}};
+
+const mc=new Chart(document.getElementById('mainChart').getContext('2d'),{type:'line',data:{labels:MUK,datasets:[
+  {label:'23/24',data:D.total.s2324,borderColor:N20, borderWidth:1.5,pointRadius:0,tension:0.3,fill:false},
+  {label:'24/25',data:D.total.s2425,borderColor:N45, borderWidth:2,  pointRadius:0,tension:0.3,fill:false,borderDash:[6,4]},
+  {label:'25/26',data:D.total.s2526,borderColor:NAVY,borderWidth:2.5,pointRadius:3,pointBackgroundColor:NAVY,tension:0.3,fill:false}
+]},options:JSON.parse(JSON.stringify(opts))});
+document.getElementById('chartNote').textContent=NOTES.total.uk;
+
+function sw(key,btn){
+  currentKey=key;
+  document.querySelectorAll('#cTabs .tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  mc.data.datasets[0].data=D[key].s2324;
+  mc.data.datasets[1].data=D[key].s2425;
+  mc.data.datasets[2].data=D[key].s2526;
+  mc.data.labels=lang==='uk'?MUK:MEN;
+  mc.update();
+  document.getElementById('chartNote').textContent=NOTES[key][lang];
+}
+
+// BAR COMPARISON — Verified totals from CSV
+// Order: Пшениця, Кукурудза, Сон.олія, Шрот, Соя, Ріпак, Ячмінь
+new Chart(document.getElementById('barComp').getContext('2d'),{type:'bar',data:{
+  labels:['Пшениця','Кукурудза','Сон.олія','Шрот','Соя','Ріпак','Ячмінь'],
+  datasets:[
+    {label:'23/24',data:[17904,28570,6315,4986,2930,3585,2458],backgroundColor:N20, borderRadius:2,borderSkipped:false},
+    {label:'24/25',data:[15138,21267,4728,3543,3908,3103,2250],backgroundColor:N45, borderRadius:2,borderSkipped:false},
+    {label:'25/26*',data:[11060,16749,3463,3075,2337,1665,1482],backgroundColor:NAVY,borderRadius:2,borderSkipped:false}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{backgroundColor:NAVY,titleFont:{family:'Plus Jakarta Sans',size:11},bodyFont:{family:'Plus Jakarta Sans',size:11},callbacks:{label:v=>`${v.dataset.label}: ${v.raw.toLocaleString()} тис. т`}}},
+  scales:{x:{grid:{display:false},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},maxRotation:20}},y:{grid:{color:'rgba(31,48,89,0.06)'},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},callback:v=>v+'к'}}}}});
+
+// TRANSPORT — Verified from CSV 30.04.2026
+const TRANSP=[{uk:'МОРЕ · POC',en:'SEA · POC',val:38610,pct:91},{uk:'ЗАЛІЗНИЦЯ',en:'RAILWAY',val:3260,pct:8},{uk:'ДУНАЙ',en:'DANUBE',val:840,pct:2},{uk:'АВТО',en:'ROAD',val:670,pct:2},{uk:'ПАРОМ',en:'FERRY',val:68,pct:0}];
+function buildTransport(){
+  const el=document.getElementById('transpRows');
+  TRANSP.forEach(t=>{
+    const u=lang==='uk'?'тис. т':'kton';
+    el.innerHTML+=`<div class="transp-row"><span class="transp-lbl">${lang==='uk'?t.uk:t.en}</span><div class="transp-bar-bg"><div class="transp-bar-fill" style="width:${t.pct}%;"></div></div><span class="transp-pct">${t.pct}%</span><span class="transp-vol">${t.val.toLocaleString()} ${u}</span></div>`;
+  });
+}
+buildTransport();
+new Chart(document.getElementById('transpDonut').getContext('2d'),{type:'doughnut',data:{labels:['Sea · POC','Railway','Danube','Road','Ferry'],datasets:[{data:[91,8,2,2,0],backgroundColor:[NAVY,'rgba(31,48,89,0.6)','rgba(31,48,89,0.4)','rgba(31,48,89,0.2)','rgba(31,48,89,0.08)'],borderWidth:2,borderColor:'#F2F2F0',hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:true,position:'bottom',labels:{font:{family:'Plus Jakarta Sans',size:9},color:SLATE,boxWidth:8,boxHeight:8,padding:8}},tooltip:{backgroundColor:NAVY,callbacks:{label:v=>`${v.label}: ${v.raw}%`}}}}});
+
+// NEWS
+const NEWS=[
+  {type:'signal',src:'SUNSEEDMAN',uk_h:'Держстат фінал 2025: соняшник 10,24 млн т (−7%). Залишки олійних 1 квіт. 2026 — 2,6 млн т (−10%). Ціни квіт. $500–545/т — атипово для сезону',en_h:'Derzhstat final 2025: sunflower 10.24 MMT (−7%). Oilseed stocks 1 Apr 2026 — 2.6 MMT (−10% YoY). April prices $500–545/t — atypical for season',uk_m:'UkrAgroConsult / Sunseedman · 29 квітня 2026',en_m:'UkrAgroConsult / Sunseedman · 29 April 2026',url:'https://ukragroconsult.com/en/news/sunseed-prices-in-ukraine-have-stabilized-and-decreased-slightly-amid-increased-competition-with-argentine-products/'},
+  {type:'warn',src:'SUNSEEDMAN',uk_h:'Травень 2026: мито РФ на соняшникову олію знижується в 3,5× — тиск на ціни FOB Black Sea. Танк з олією пошкоджений у Чорноморську',en_h:'May 2026: Russia sunflower oil duty falls 3.5× — pressure on FOB Black Sea prices. Oil tank damaged in Chornomorsk after drone strike',uk_m:'UkrAgroConsult · 29 квітня 2026',en_m:'UkrAgroConsult · 29 April 2026',url:'https://ukragroconsult.com/en/news/sunseed-prices-in-ukraine-have-stabilized-and-decreased-slightly-amid-increased-competition-with-argentine-products/'},
+  {type:'warn',src:'LATIFUNDIST',uk_h:'Скандал Волиця-Агро: нестача 130+ тис. т зерна на елеваторі Київщини. Серед постраждалих — ADM, LDC, Cargill, Kernel. УЗА: трейдери призупинили закупівлі через сторонні елеватори',en_h:'Volytsia-Agro scandal: 130,000+ t grain shortage at Kyiv-region elevator. ADM, LDC, Cargill, Kernel affected. UZA: traders paused third-party elevator purchases',uk_m:'Latifundist / InVenture · березень 2026',en_m:'Latifundist / InVenture · March 2026',url:'https://inventure.com.ua/en/news/ukraine/ukrainian-farmers-may-shift-investment-focus-toward-in-house-grain-storage-after-the-volytsia-agro-scandal'},
+  {type:'warn',src:'USDA WASDE',uk_h:'WASDE травень 2026 (12 трав.): врожай пшениці України 26/27 — найменший за 3 роки. Глобальне виробництво зернових скорочується: великі експортери разом мінус 32 млн т. Запаси пшениці України 25/26 — 3,93 млн т (підвищено).',en_h:'WASDE May 2026 (May 12): Ukraine 26/27 wheat crop forecast smallest in 3 years. Global grain production tightening: major exporters collectively down 32 MMT. Ukraine 25/26 wheat ending stocks — 3.93 MMT (raised).',uk_m:'USDA WASDE-671 · 12 травня 2026',en_m:'USDA WASDE-671 · 12 May 2026',url:'https://www.usda.gov/oce/commodity/wasde/wasde0526v2.pdf'},
+  {type:'good',src:'ASAP AGRI',uk_h:'FAS USDA 26/27: соняшник +16% до 12,8 млн т, ріпак +25% до 4 млн т. Україна зберігає лідерство в олії — прогноз 5 млн т (+11%). Площі розширяться',en_h:'FAS USDA 26/27: sunflower +16% to 12.8 MMT, rapeseed +25% to 4 MMT. Ukraine keeps oil leadership — 5 MMT forecast (+11%). Area expanding',uk_m:'FAS USDA Oilseeds Annual · квітень 2026',en_m:'FAS USDA Oilseeds Annual · April 2026',url:'https://www.ofimagazine.com/news/ukraine-to-expand-sunflower-and-rapeseed-planted-areas'},
+  {type:'good',src:'LATIFUNDIST',uk_h:'FAS USDA 26/27: кукурудза 31,5 млн т, експорт +26% до 26 млн т. Ячмінь: +133% до 4,2 млн т. Пшениця: +19% до 15,5 млн т. Рекордні запаси відкривають нові можливості',en_h:'FAS USDA 26/27: corn 31.5 MMT, exports +26% to 26 MMT. Barley: +133% to 4.2 MMT. Wheat: +19% to 15.5 MMT. Record carry-over creates opportunities',uk_m:'World Grain / FAS USDA · квітень 2026',en_m:'World Grain / FAS USDA · April 2026',url:'https://www.world-grain.com/articles/22677-fas-ukraine-grain-exports-down-22'},
+  {type:'warn',src:'LATIFUNDIST',uk_h:'Удар РФ по порту Південний: виявлено розлив соняшникової олії в Чорному морі. Акваторія порту закрита. Додаткові ризики для страхування Black Sea вантажів.',en_h:'Russian strike on Pivdennyi port: sunflower oil spill detected in Black Sea. Port waters closed. Additional insurance risks for Black Sea cargo.',uk_m:'Latifundist · квітень–травень 2026',en_m:'Latifundist · April–May 2026',url:'https://latifundist.com/en/novosti'},
+  {type:'good',src:'LATIFUNDIST',uk_h:'Grain Ukraine 2026, 4–5 червня, Київ — «Новий зерновий порядок». 50+ спікерів, 500+ учасників. Теми: квоти ЄС, Sea vs Land логістика, M&A, диверсифікація ринків',en_h:'Grain Ukraine 2026, June 4–5, Kyiv — "The New Grain Order". 50+ speakers, 500+ participants. Topics: EU quotas, Sea vs Land logistics, M&A, market diversification',uk_m:'Latifundist · квітень 2026',en_m:'Latifundist · April 2026',url:'https://latifundist.com/en/novosti/70033-ogolosheno-dati-provedennya-grain-ukraine-2026?amp=1'},
+  {type:'warn',src:'ASAP AGRI',uk_h:'Туреччина 25/26: імпорт кукурудзи може впасти на ~2,5 млн т (USDA). Власне виробництво зростає, конкуренція РФ посилюється. Іспанія може повернутись через тарифи Трампа',en_h:'Turkey 25/26: corn imports may fall ~2.5 MMT (USDA). Domestic output growing, Russian competition intensifying. Spain may return due to Trump tariffs',uk_m:'Fastmarkets / ASAP Agri · січень 2026',en_m:'Fastmarkets / ASAP Agri · January 2026',url:'https://www.fastmarkets.com/insights/ukrainian-corn-exports-at-eight-year-low-as-logistics-curb-shipments-despite-competitive-prices-2026-preview/'}
+];
+function buildNews(){
+  const el=document.getElementById('newsFeed');
+  NEWS.forEach(n=>{
+    const h=lang==='uk'?n.uk_h:n.en_h, m=lang==='uk'?n.uk_m:n.en_m;
+    el.innerHTML+=`<a class="news-item" href="${n.url}" target="_blank" rel="noopener"><span class="news-tag ${n.type}">${n.src}</span><div class="news-body"><div class="news-headline">${h}</div><div class="news-meta">${m}</div></div><span class="news-arrow">↗</span></a>`;
+  });
+}
+buildNews();
+
+// CARRY-OVER CARDS
+const CARRY=[
+  {uk_c:'Пшениця',    en_c:'Wheat',      harvest:'24,0 млн т',uk_e:'~12,5 млн т (11,6 факт + ~0,9)',en_e:'~12.5 MMT (11.6 act + ~0.9)',uk_s:'3,9 млн т',en_s:'3.9 MMT',uk_d:'↑ +75% до 24/25 · 5,4 млн т у сховищах',en_d:'↑ +75% vs 24/25 · 5.4 MMT in storage',src:'USDA WASDE травень 2026 · Держстат · УЗА'},
+  {uk_c:'Кукурудза',  en_c:'Corn',       harvest:'31,5 млн т',uk_e:'~22 млн т (17,9 факт + ~4,1)',  en_e:'~22 MMT (17.9 act + ~4.1)',   uk_s:'~8,3 млн т',en_s:'~8.3 MMT',uk_d:'↑ Рекорд · 2 міс. до кінця сезону',en_d:'↑ Record · 2 months left',src:'УЗА · FAS USDA · розрах.'},
+  {uk_c:'Сон. олія',  en_c:'Sunfl. oil', harvest:'5,1 млн т', uk_e:'~3,8 млн т (3,5 факт + ~0,3)', en_e:'~3.8 MMT (3.5 act + ~0.3)',    uk_s:'~0,9 млн т',en_s:'~0.9 MMT',uk_d:'↓ Соняшник 10,24 млн т (Держстат)',en_d:'↓ Sunflower 10.24 MMT (Derzhstat)',src:'ASAP Agri · APK-Inform'},
+  {uk_c:'Ріпак',      en_c:'Rapeseed',   harvest:'3,3 млн т', uk_e:'~2,35 млн т (1,7 факт + ~0,7)',en_e:'~2.35 MMT (1.7 act + ~0.7)',   uk_s:'~0,7 млн т',en_s:'~0.7 MMT',uk_d:'↓ Внутрішня переробка зростає',en_d:'↓ Domestic crushing growing',src:'УЗА · ASAP Agri'},
+  {uk_c:'Ячмінь',     en_c:'Barley',     harvest:'4,9 млн т', uk_e:'~2,3 млн т (1,5 факт + ~0,8)', en_e:'~2.3 MMT (1.5 act + ~0.8)',    uk_s:'~1,1 млн т',en_s:'~1.1 MMT',uk_d:'↓ −34% · 26/27: +133% до 4,2 млн т',en_d:'↓ −34% · 26/27: +133% to 4.2 MMT',src:'УЗА · FAS USDA квіт.2026'}
+];
+function buildCarry(){
+  const el=document.getElementById('carryCards'), L=lang;
+  CARRY.forEach(c=>{
+    const eL=L==='uk'?'Експорт':'Export', sL=L==='uk'?'Залишок':'Ending stock', hL=L==='uk'?'врожай 2025':'crop 2025';
+    el.innerHTML+=`<div class="carry-card"><div class="carry-crop">${L==='uk'?c.uk_c:c.en_c}</div><div class="carry-bar"></div><div class="carry-prod">${c.harvest} <span class="carry-unit">${hL}</span></div><div class="carry-row"><span class="carry-key">${eL}</span><span class="carry-num">${L==='uk'?c.uk_e:c.en_e}</span></div><div class="carry-row"><span class="carry-key">${sL}</span><span class="carry-num">${L==='uk'?c.uk_s:c.en_s}</span></div><div class="carry-delta">${L==='uk'?c.uk_d:c.en_d}</div><div class="carry-src">${c.src}</div></div>`;
+  });
+}
+buildCarry();
+
+// BALANCE CHART
+new Chart(document.getElementById('balChart').getContext('2d'),{type:'bar',data:{
+  labels:['Пшениця','Кукурудза','Сон.олія','Ріпак','Ячмінь'],
+  datasets:[
+    {label:'Виробництво',data:[24.0,31.5,5.1,3.3,4.9],backgroundColor:NAVY,borderRadius:3,borderSkipped:false},
+    {label:'Експорт',    data:[13.5,22.0,3.8,2.35,2.3],backgroundColor:N45, borderRadius:3,borderSkipped:false},
+    {label:'Залишок',    data:[3.93,8.3,0.9,0.7,1.1],   backgroundColor:N20, borderRadius:3,borderSkipped:false}
+  ]},options:{responsive:true,maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{backgroundColor:NAVY,titleFont:{family:'Plus Jakarta Sans',size:11},bodyFont:{family:'Plus Jakarta Sans',size:11},callbacks:{label:v=>`${v.dataset.label}: ${v.raw} млн т`}}},
+  scales:{x:{grid:{display:false},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},maxRotation:0}},y:{grid:{color:'rgba(31,48,89,0.06)'},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},callback:v=>v+'М'}}}}});
+
+// INITIAL i18n
+document.querySelectorAll('.t[data-uk]').forEach(el=>{el.textContent=el.getAttribute('data-uk');});
+</script>
+</body>
+</html>

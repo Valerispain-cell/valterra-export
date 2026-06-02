@@ -100,8 +100,6 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
 .carry-delta { font-size: 9px; color: var(--slate); margin-top: 8px; }
 .carry-src { font-size: 8px; color: var(--n45); margin-top: 4px; }
 
-/* RISK styles removed */
-
 /* NEWS */
 .news-item { display: flex; align-items: flex-start; padding: 14px 22px; border-bottom: 1px solid var(--div); text-decoration: none; transition: background 180ms ease; }
 .news-item:last-child { border-bottom: none; }
@@ -109,7 +107,6 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
 .news-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); background: var(--navy); padding: 3px 8px; border-radius: 3px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; margin-right: 14px; min-width: 84px; text-align: center; }
 .news-tag.warn   { background: var(--n45); }
 .news-tag.good   { background: rgba(31,48,89,0.65); }
-.news-tag.signal { background: var(--steel); }
 .news-body { flex: 1; }
 .news-headline { font-size: 12px; font-weight: 500; color: var(--navy); line-height: 1.5; margin-bottom: 3px; }
 .news-meta { font-size: 10px; color: var(--slate); }
@@ -159,45 +156,81 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
     </div>
     <div class="nav-meta">
       <span class="t" data-uk="ЕКСПОРТ УКРАЇНИ · СЕЗОН 25/26" data-en="UKRAINE EXPORT FLOW · SEASON 25/26"></span><br>
-      <span class="t" data-uk="ПІК «DELIVERY CONTROL» ЄАІС · ДАНІ НА 15 ТРАВНЯ 2026" data-en="PIK «DELIVERY CONTROL» EAIS · DATA AS OF 15 MAY 2026"></span>
+      <span class="t" data-uk="ПІК «DELIVERY CONTROL» ЄАІС · ДАНІ НА 31 ТРАВНЯ 2026" data-en="PIK «DELIVERY CONTROL» EAIS · DATA AS OF 31 MAY 2026"></span>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="caps-label"><span class="t" data-uk="Накопичений експорт · сезон 25/26 · липень 2025 — 15 травня 2026" data-en="Cumulative export · season 25/26 · July 2025 — 15 May 2026"></span></div>
-  <div class="hero-number">42,6 <span class="hero-unit"><span class="t" data-uk="млн т" data-en="MMT"></span></span></div>
-  <div class="hero-sub"><span class="t" data-uk="Зернові · олійні · продукти переробки · 10 культур · 10 повних міс. (лип–кві) + 15 трав." data-en="Grains · oilseeds · processed products · 10 crops · 10 full months (Jul–Apr) + 15 May"></span></div>
-  <div class="hero-note"><span class="t" data-uk="До 15 травня 2026: 42,6 млн т. Травень частковий — 2,3 млн т за 15 днів. Квітень рекордний: 5,2 млн т. Частка України в імпорті кукурудзи ЄС: 57% → 22,4% (S&P GTAS)." data-en="To 15 May 2026: 42.6 MMT. May partial — 2.3 MMT in 15 days. April record: 5.2 MMT. Ukraine EU corn import share: 57% → 22.4% (S&P GTAS)."></span></div>
+  <div class="caps-label"><span class="t" data-uk="Накопичений експорт · сезон 25/26 · липень 2025 — 31 травня 2026" data-en="Cumulative export · season 25/26 · July 2025 — 31 May 2026"></span></div>
+  <div class="hero-number">44,97 <span class="hero-unit"><span class="t" data-uk="млн т" data-en="MMT"></span></span></div>
+  <div class="hero-sub"><span class="t" data-uk="Зернові · олійні · продукти переробки · 11 повних місяців (лип–тра)" data-en="Grains · oilseeds · processed products · 11 full months (Jul–May)"></span></div>
+  <div class="hero-note"><span class="t" data-uk="Травень 2026: 4,7 млн т — другий найкращий місяць сезону після квітня (5,2 млн т). Частка України в імпорті кукурудзи ЄС: 57% → 22,4% (S&P GTAS)." data-en="May 2026: 4.7 MMT — second best month of season after April (5.2 MMT). Ukraine EU corn import share: 57% → 22.4% (S&P GTAS)."></span></div>
 </div>
 
 <!-- KPI -->
 <div class="kpi-strip section">
   <div class="kpi">
-    <div class="kpi-lbl"><span class="t" data-uk="Пшениця · до 15 трав." data-en="Wheat · to 15 May"></span></div>
-    <div class="kpi-val">11 610</div>
-    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 15 138 · −23%" data-en="'000 t · 24/25 full: 15 138 · −23%"></span></div>
+    <div class="kpi-lbl"><span class="t" data-uk="Пшениця · 11 міс." data-en="Wheat · 11 mo."></span></div>
+    <div class="kpi-val">12 345</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 15 138 · −18%" data-en="'000 t · 24/25 full: 15 138 · −18%"></span></div>
   </div>
   <div class="kpi">
-    <div class="kpi-lbl"><span class="t" data-uk="Кукурудза · до 15 трав." data-en="Corn · to 15 May"></span></div>
-    <div class="kpi-val">17 911</div>
-    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 21 267 · −16%" data-en="'000 t · 24/25 full: 21 267 · −16%"></span></div>
+    <div class="kpi-lbl"><span class="t" data-uk="Кукурудза · 11 міс." data-en="Corn · 11 mo."></span></div>
+    <div class="kpi-val">19 134</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 21 267 · −10%" data-en="'000 t · 24/25 full: 21 267 · −10%"></span></div>
   </div>
   <div class="kpi">
-    <div class="kpi-lbl"><span class="t" data-uk="Соняшн. олія · до 15 трав." data-en="Sunfl. oil · to 15 May"></span></div>
-    <div class="kpi-val">3 661</div>
-    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 4 728 · −23%" data-en="'000 t · 24/25 full: 4 728 · −23%"></span></div>
+    <div class="kpi-lbl"><span class="t" data-uk="Соняшн. олія · 11 міс." data-en="Sunfl. oil · 11 mo."></span></div>
+    <div class="kpi-val">3 857</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 4 728 · −18%" data-en="'000 t · 24/25 full: 4 728 · −18%"></span></div>
   </div>
   <div class="kpi">
-    <div class="kpi-lbl"><span class="t" data-uk="Шрот · до 15 трав." data-en="Meal · to 15 May"></span></div>
-    <div class="kpi-val">3 255</div>
-    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 3 543 · −8%" data-en="'000 t · 24/25 full: 3 543 · −8%"></span></div>
+    <div class="kpi-lbl"><span class="t" data-uk="Шрот · 11 міс." data-en="Meal · 11 mo."></span></div>
+    <div class="kpi-val">3 323</div>
+    <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 3 543 · −6%" data-en="'000 t · 24/25 full: 3 543 · −6%"></span></div>
   </div>
   <div class="kpi">
-    <div class="kpi-lbl"><span class="t" data-uk="Ячмінь · до 15 трав." data-en="Barley · to 15 May"></span></div>
-    <div class="kpi-val">1 482</div>
+    <div class="kpi-lbl"><span class="t" data-uk="Ячмінь · 11 міс." data-en="Barley · 11 mo."></span></div>
+    <div class="kpi-val">1 496</div>
     <div class="kpi-delta"><span class="t" data-uk="тис. т · 24/25 повний: 2 250 · −34%" data-en="'000 t · 24/25 full: 2 250 · −34%"></span></div>
+  </div>
+</div>
+
+<!-- SIGNAL BLOCK -->
+<div style="background:var(--navy);border-radius:4px;padding:20px 28px;margin-bottom:56px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+  <div style="flex-shrink:0;">
+    <div style="font-size:9px;font-weight:400;letter-spacing:0.14em;color:var(--slate);text-transform:uppercase;margin-bottom:8px;">
+      <span class="t" data-uk="СИГНАЛ · РИНОК КУКУРУДЗИ ЄС · S&amp;P GTAS / EU COMMISSION · ЛЮТ. 2026" data-en="SIGNAL · EU CORN MARKET · S&amp;P GTAS / EU COMMISSION · FEB 2026"></span>
+    </div>
+    <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:9px;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);margin-bottom:4px;">24/25</div>
+        <div style="font-size:42px;font-weight:500;color:var(--cream);letter-spacing:-0.025em;line-height:1;">57%</div>
+        <div style="font-size:11px;color:var(--slate);margin-top:3px;">9,6 <span class="t" data-uk="млн т" data-en="MMT"></span></div>
+      </div>
+      <div style="font-size:32px;font-weight:400;color:var(--slate);padding-bottom:8px;">→</div>
+      <div>
+        <div style="font-size:9px;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);margin-bottom:4px;">25/26</div>
+        <div style="font-size:42px;font-weight:500;color:var(--steel);letter-spacing:-0.025em;line-height:1;">22,4%</div>
+        <div style="font-size:11px;color:var(--slate);margin-top:3px;">~4,7 <span class="t" data-uk="млн т" data-en="MMT"></span></div>
+      </div>
+    </div>
+    <div style="font-size:9px;letter-spacing:0.10em;text-transform:uppercase;color:var(--slate);margin-top:10px;">
+      <span class="t" data-uk="Частка України в імпорті кукурудзи ЄС" data-en="Ukraine share of EU corn imports"></span>
+    </div>
+  </div>
+  <div style="width:1px;height:80px;background:rgba(242,242,240,0.10);flex-shrink:0;"></div>
+  <div style="flex:1;min-width:200px;">
+    <div style="font-size:13px;font-weight:400;color:var(--cream);line-height:1.6;margin-bottom:8px;">
+      <span class="t"
+        data-uk="Бразилія 40% · США 28,3% · Україна 22,4%. Ринок ЄС зростає до ~21 млн т — але частка України впала вдвічі за один сезон."
+        data-en="Brazil 40% · USA 28.3% · Ukraine 22.4%. EU market growing to ~21 MMT — but Ukraine's share halved in a single season."></span>
+    </div>
+    <div style="font-size:10px;color:var(--slate);">
+      <span class="t" data-uk="Логістичні обмеження · конкуренція РФ · тарифи США відкривають вікно для повернення Іспанії" data-en="Logistics constraints · Russian competition · US tariffs open window for Spain to return"></span>
+    </div>
   </div>
 </div>
 
@@ -219,7 +252,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
     <div class="legend">
       <span class="leg-item"><span class="leg-line" style="background:var(--n20);"></span><span class="t" data-uk="23/24 (повний сезон, лип–чер)" data-en="23/24 (full season, Jul–Jun)"></span></span>
       <span class="leg-item"><span class="leg-line" style="background:var(--n45);"></span><span class="t" data-uk="24/25 (повний сезон, лип–чер)" data-en="24/25 (full season, Jul–Jun)"></span></span>
-      <span class="leg-item"><span class="leg-line" style="background:var(--navy);"></span><span class="t" data-uk="25/26 · повні місяці лип–кві (40,3 млн т) · +15 трав. 2,3 млн т" data-en="25/26 · full months Jul–Apr (40.3 MMT) · +15 May 2.3 MMT"></span></span>
+      <span class="leg-item"><span class="leg-line" style="background:var(--navy);"></span><span class="t" data-uk="25/26 · 11 повних місяців лип–тра (44,97 млн т)" data-en="25/26 · 11 full months Jul–May (44.97 MMT)"></span></span>
     </div>
     <div class="note" id="chartNote"></div>
   </div>
@@ -249,7 +282,7 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
 
 <!-- NEWS -->
 <div class="section">
-  <div class="section-label"><span class="t" data-uk="Ринкові сигнали · Свіжі новини · 1 травня 2026" data-en="Market intelligence · Latest news · 1 May 2026"></span></div>
+  <div class="section-label"><span class="t" data-uk="Ринкові сигнали · Свіжі новини · червень 2026" data-en="Market intelligence · Latest news · June 2026"></span></div>
   <div class="card" style="padding:0;overflow:hidden;">
     <div id="newsFeed"></div>
   </div>
@@ -280,8 +313,8 @@ body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); c
   </svg>
   <div class="footer-src">
     <span class="t"
-      data-uk="Джерела: ПІК «Delivery Control» ЄАІС — фактичний експорт до 15.05.2026 · Держстат України — фінальний врожай 2025 · УЗА (груд. 2025) · ASAP Agri / Latifundist · USDA WASDE квітень 2026 · APK-Inform · S&P GTAS / EU Commission. Всі дані у тис. тонн якщо не вказано інше."
-      data-en="Sources: PIK «Delivery Control» EAIS — actual exports to 15.05.2026 · Derzhstat Ukraine — final 2025 harvest · UZA (Dec 2025) · ASAP Agri / Latifundist · USDA WASDE April 2026 · APK-Inform · S&P GTAS / EU Commission. All figures in '000 tonnes unless stated."></span>
+      data-uk="Джерела: ПІК «Delivery Control» ЄАІС — фактичний експорт до 31.05.2026 · Держстат України · УЗА (червень 2026) · ASAP Agri / Latifundist · USDA WASDE травень 2026 · USDA GAIN UP2026-0011 (FAS/Kyiv, квітень 2026) · APK-Inform · S&P GTAS / EU Commission. Всі дані у тис. тонн якщо не вказано інше."
+      data-en="Sources: PIK «Delivery Control» EAIS — actual exports to 31.05.2026 · Derzhstat Ukraine · UZA (June 2026) · ASAP Agri / Latifundist · USDA WASDE May 2026 · USDA GAIN UP2026-0011 (FAS/Kyiv, April 2026) · APK-Inform · S&P GTAS / EU Commission. All figures in '000 tonnes unless stated."></span>
   </div>
 </footer>
 
@@ -302,30 +335,30 @@ function setLang(l,btn){
   document.getElementById('newsFeed').innerHTML='';   buildNews();
 }
 
-const MUK=['Лип','Сер','Вер','Жов','Лис','Гру','Січ','Лют','Бер','Кві','Тра','Чер'];
-const MEN=['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May','Jun'];
+const MUK=['Лип','Сер','Вер','Жов','Лис','Гру','Січ','Лют','Бер','Кві','Тра'];
+const MEN=['Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr','May'];
 
-// Verified from CSV 30.04.2026
+// Verified from CSV 31.05.2026 — 11 full months
 const D={
-  total:  {s2324:[3388,3711,3635,4337,5457,7177,6364,7338,6992,7206,6714,5042],s2425:[4904,4763,4618,6012,5479,4753,4065,4364,4658,3729,4042,3091],s2526:[2906,3708,2843,3945,4430,4136,4133,4451,4523,5193]},
-  wheat:  {s2324:[841,1224,1273,1341,1131,1844,1504,2499,2001,1691,1645,908],  s2425:[1522,2244,2313,1647,1107,789,822,1164,1088,759,850,833],    s2526:[859,2048,1830,1505,958,619,449,658,803,1332]},
-  corn:   {s2324:[1099,877,628,1284,2330,3116,2931,2917,3138,3810,3550,2890],  s2425:[1413,646,526,1926,2598,2561,2253,2161,2203,1751,1998,1230], s2526:[550,230,61,1094,1871,2173,2693,2848,2503,2726]},
-  oil:    {s2324:[502,413,360,375,506,673,526,591,629,654,624,462],             s2425:[435,199,349,458,509,406,340,291,503,417,461,360],           s2526:[402,161,203,358,367,427,347,322,435,441]},
-  rape:   {s2324:[251,670,650,386,349,331,321,259,154,111,76,27],              s2425:[411,794,705,475,291,130,101,31,33,84,34,13],                s2526:[137,519,220,177,184,122,101,74,109,20]},
-  soy:    {s2324:[70,30,210,432,506,418,313,285,230,124,107,207],              s2425:[221,146,246,716,415,346,194,391,369,303,270,293],           s2526:[378,208,78,230,455,203,226,204,193,162]},
-  barley: {s2324:[352,147,120,54,181,251,290,206,333,233,209,82],              s2425:[635,469,228,350,157,128,62,74,56,47,41,2],                 s2526:[325,324,238,200,100,159,13,24,39,59]},
-  meal:   {s2324:[240,333,377,391,387,488,422,516,439,511,453,430],            s2425:[238,238,234,384,357,346,233,206,325,322,345,315],           s2526:[205,179,177,335,447,378,273,282,394,406]}
+  total:  {s2324:[3388,3711,3635,4337,5457,7177,6364,7338,6992,7206,6714],s2425:[4904,4763,4618,6012,5479,4753,4065,4364,4658,3729,4042],s2526:[2906,3708,2843,3945,4430,4136,4133,4451,4523,5193,4700]},
+  wheat:  {s2324:[841,1224,1273,1341,1131,1844,1504,2499,2001,1691,1645],s2425:[1522,2244,2313,1647,1107,789,822,1164,1088,759,850],s2526:[859,2048,1830,1505,958,619,449,658,803,1332,1285]},
+  corn:   {s2324:[1099,877,628,1284,2330,3116,2931,2917,3138,3810,3550],s2425:[1413,646,526,1926,2598,2561,2253,2161,2203,1751,1998],s2526:[550,230,61,1094,1871,2173,2693,2848,2503,2726,2384]},
+  oil:    {s2324:[502,413,360,375,506,673,526,591,629,654,624],s2425:[435,199,349,458,509,406,340,291,503,417,461],s2526:[402,161,203,358,367,427,347,322,435,441,394]},
+  rape:   {s2324:[251,670,650,386,349,331,321,259,154,111,76],s2425:[411,794,705,475,291,130,101,31,33,84,34],s2526:[137,519,220,177,184,122,101,74,109,20,15]},
+  soy:    {s2324:[70,30,210,432,506,418,313,285,230,124,107],s2425:[221,146,246,716,415,346,194,391,369,303,270],s2526:[378,208,78,230,455,203,226,204,193,162,198]},
+  barley: {s2324:[352,147,120,54,181,251,290,206,333,233,209],s2425:[635,469,228,350,157,128,62,74,56,47,41],s2526:[325,324,238,200,100,159,13,24,39,59,15]},
+  meal:   {s2324:[240,333,377,391,387,488,422,516,439,511,453],s2425:[238,238,234,384,357,346,233,206,325,322,345],s2526:[205,179,177,335,447,378,273,282,394,406,248]}
 };
 
 const NOTES={
-  total:  {uk:'ВСЬОГО: 40,3 млн т за 10 місяців. Квітень — 5,2 млн т, найкращий місяць сезону. Провал лип–вер через атаки на порти. Кукурудза компенсує з грудня, пшениця відновлюється в квітні.',en:'TOTAL: 40.3 MMT in 10 months. April — 5.2 MMT, strongest month. Jul–Sep slump due to port attacks. Corn compensates from December, wheat recovering in April.'},
-  wheat:  {uk:'ПШЕНИЦЯ: 11 060 тис. т (−27% до 24/25: 15 138). EU-квоти та конкуренція рос. зерна. USDA WASDE травень 2026: залишки підвищено до 3,93 млн т, врожай 26/27 — найменший за 3 роки. Прогноз експорту 25/26: 12,5 млн т.',en:'WHEAT: 11,060 kton (−27% vs 24/25: 15,138). EU quotas + Russian competition. USDA WASDE May 2026: ending stocks raised to 3.93 MMT, 26/27 crop forecast smallest in 3 years. Export forecast 25/26: 12.5 MMT.'},
-  corn:   {uk:'КУКУРУДЗА: 16 749 тис. т (−21% до 24/25). Квітень 2026 — 2 726 тис. т. Врожай 2025 — 31,5 млн т (+22%). Прогноз USDA 26/27: 26 млн т (+26%). Іспанія може повернутись через тарифи США.',en:'CORN: 16,749 kton (−21% vs 24/25). April 2026 — 2,726 kton. 2025 crop — 31.5 MMT (+22%). USDA 26/27 forecast: 26 MMT (+26%). Spain may return due to US tariffs.'},
-  oil:    {uk:'СОНЯШНИКОВА ОЛІЯ: 3 463 тис. т (−27% до 24/25: 4 728). Держстат: соняшник 2025 — 10,24 млн т (−7%). Залишки 1 квіт. — 2,6 млн т. Ціна квіт. $500–545/т — атипово для сезону.',en:'SUNFL. OIL: 3,463 kton (−27% vs 24/25: 4,728). Derzhstat: sunflower 2025 — 10.24 MMT (−7%). Stocks 1 Apr — 2.6 MMT. April price $500–545/t — atypical for season.'},
-  rape:   {uk:'РІПАК: 1 665 тис. т (−46% до 24/25: 3 103). Урожай 2025 — 3,3 млн т. Внутрішня переробка зростає через дефіцит соняшника. 26/27: площі +25%, виробництво 4 млн т.',en:'RAPESEED: 1,665 kton (−46% vs 24/25: 3,103). 2025 crop — 3.3 MMT. Domestic crushing growing due to sunflower deficit. 26/27: area +25%, production 4 MMT.'},
-  soy:    {uk:'СОЯ: 2 337 тис. т за 10 міс. Виробництво 2025 — ~5,6 млн т (площі скорочені на користь кукурудзи). Пік листопад — 455 тис. т.',en:'SOY: 2,337 kton in 10 months. 2025 production — ~5.6 MMT (acreage shifted to corn). November peak — 455 kton.'},
-  barley: {uk:'ЯЧМІНЬ: 1 482 тис. т (−34% до 24/25: 2 250). Різкий провал з січня: 13–39 тис. т vs 47–74 у 24/25. Покупці: Китай, Туреччина, Саудівська Аравія. 26/27: +133% до 4,2 млн т.',en:'BARLEY: 1,482 kton (−34% vs 24/25: 2,250). Sharp collapse from January: 13–39 kton vs 47–74 in 24/25. Buyers: China, Turkey, Saudi Arabia. 26/27: +133% to 4.2 MMT.'},
-  meal:   {uk:'ШРОТ: 3 075 тис. т (−13% до 24/25: 3 543). Листопад — 447 тис. т: рекорд серед трьох сезонів. Внутрішня переробка зростає. Відносно стабільний сегмент.',en:'MEAL: 3,075 kton (−13% vs 24/25: 3,543). November — 447 kton: record across 3 seasons. Domestic processing growing. Relatively stable segment.'}
+  total:  {uk:'ВСЬОГО: 44,97 млн т за 11 місяців. Травень 4,7 млн т — другий найкращий місяць сезону. Квітень рекордний: 5,2 млн т. Кукурудза компенсує зниження пшениці та ячменю.',en:'TOTAL: 44.97 MMT in 11 months. May 4.7 MMT — second best month. April record: 5.2 MMT. Corn compensates for wheat and barley decline.'},
+  wheat:  {uk:'ПШЕНИЦЯ: 12 345 тис. т (−18% до 24/25). Прогноз сезону УЗА: 13,5 млн т. Залишок 25/26: 2,43 млн т (USDA WASDE + УЗА). Врожай 26/27 — найменший за 3 роки.',en:'WHEAT: 12,345 kton (−18% vs 24/25). UZA season forecast: 13.5 MMT. Ending stocks 25/26: 2.43 MMT. 26/27 crop forecast smallest in 3 years.'},
+  corn:   {uk:'КУКУРУДЗА: 19 134 тис. т (−10% до 24/25). Прогноз сезону: 22 млн т. Залишок 25/26: 2,85 млн т. УЗА 26/27: виробництво 32,1 млн т, експорт 27 млн т.',en:'CORN: 19,134 kton (−10% vs 24/25). Season forecast: 22 MMT. Ending stocks 25/26: 2.85 MMT. UZA 26/27: production 32.1 MMT, exports 27 MMT.'},
+  oil:    {uk:'СОНЯШНИКОВА ОЛІЯ: 3 857 тис. т (−18% до 24/25). Прогноз сезону: 4,5 млн т (GAIN UP2026-0011). Залишок 25/26: 0,145 млн т. Extraction rate 43%. Ціна $1 300/т.',en:'SUNFL. OIL: 3,857 kton (−18% vs 24/25). Season forecast: 4.5 MMT (GAIN UP2026-0011). Ending stocks 25/26: 0.145 MMT. Extraction rate 43%. Price $1,300/t.'},
+  rape:   {uk:'РІПАК: 1 679 тис. т за 11 міс. Прогноз сезону: 2,1 млн т (GAIN). Залишок 25/26: 0,058 млн т. Внутрішня переробка зростає через дефіцит соняшника. 26/27: площі +11%.',en:'RAPESEED: 1,679 kton in 11 months. Season forecast: 2.1 MMT (GAIN). Ending stocks 25/26: 0.058 MMT. Domestic crush growing due to sunflower deficit. 26/27: area +11%.'},
+  soy:    {uk:'СОЯ: 2 535 тис. т за 11 міс. Виробництво 25/26 — 4,9 млн т (GAIN). Внутрішня переробка зростає через дефіцит соняшника (+10% export duty).',en:'SOY: 2,535 kton in 11 months. 25/26 production — 4.9 MMT (GAIN). Domestic crush growing due to sunflower deficit (+10% export duty).'},
+  barley: {uk:'ЯЧМІНЬ: 1 496 тис. т (−34% до 24/25). Прогноз сезону УЗА: 1,6 млн т. Залишок 25/26: 2,10 млн т. Травень лише 15 тис.т. 26/27: +133% до 4,2 млн т.',en:'BARLEY: 1,496 kton (−34% vs 24/25). UZA season forecast: 1.6 MMT. Ending stocks 25/26: 2.10 MMT. May only 15 kton. 26/27: +133% to 4.2 MMT.'},
+  meal:   {uk:'ШРОТ: 3 323 тис. т (−6% до 24/25). Відносно стабільний сегмент. Внутрішня переробка зростає. Листопад — 447 тис. т: рекорд серед трьох сезонів.',en:'MEAL: 3,323 kton (−6% vs 24/25). Relatively stable segment. Domestic processing growing. November — 447 kton: record across 3 seasons.'}
 };
 
 // LINE CHART
@@ -353,20 +386,25 @@ function sw(key,btn){
   document.getElementById('chartNote').textContent=NOTES[key][lang];
 }
 
-// BAR COMPARISON — Verified totals from CSV
-// Order: Пшениця, Кукурудза, Сон.олія, Шрот, Соя, Ріпак, Ячмінь
+// BAR COMPARISON — CSV 31.05.2026 (11 міс)
 new Chart(document.getElementById('barComp').getContext('2d'),{type:'bar',data:{
   labels:['Пшениця','Кукурудза','Сон.олія','Шрот','Соя','Ріпак','Ячмінь'],
   datasets:[
     {label:'23/24',data:[17904,28570,6315,4986,2930,3585,2458],backgroundColor:N20, borderRadius:2,borderSkipped:false},
     {label:'24/25',data:[15138,21267,4728,3543,3908,3103,2250],backgroundColor:N45, borderRadius:2,borderSkipped:false},
-    {label:'25/26*',data:[11060,16749,3463,3075,2337,1665,1482],backgroundColor:NAVY,borderRadius:2,borderSkipped:false}
+    {label:'25/26*',data:[12345,19134,3857,3323,2535,1679,1496],backgroundColor:NAVY,borderRadius:2,borderSkipped:false}
   ]},options:{responsive:true,maintainAspectRatio:false,
   plugins:{legend:{display:false},tooltip:{backgroundColor:NAVY,titleFont:{family:'Plus Jakarta Sans',size:11},bodyFont:{family:'Plus Jakarta Sans',size:11},callbacks:{label:v=>`${v.dataset.label}: ${v.raw.toLocaleString()} тис. т`}}},
   scales:{x:{grid:{display:false},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},maxRotation:20}},y:{grid:{color:'rgba(31,48,89,0.06)'},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},callback:v=>v+'к'}}}}});
 
-// TRANSPORT — Verified from CSV 30.04.2026
-const TRANSP=[{uk:'МОРЕ · POC',en:'SEA · POC',val:38610,pct:91},{uk:'ЗАЛІЗНИЦЯ',en:'RAILWAY',val:3260,pct:8},{uk:'ДУНАЙ',en:'DANUBE',val:840,pct:2},{uk:'АВТО',en:'ROAD',val:670,pct:2},{uk:'ПАРОМ',en:'FERRY',val:68,pct:0}];
+// TRANSPORT — CSV 31.05.2026
+const TRANSP=[
+  {uk:'МОРЕ · POC',en:'SEA · POC',val:40766,pct:90.7},
+  {uk:'ЗАЛІЗНИЦЯ',en:'RAILWAY',val:3433,pct:7.6},
+  {uk:'ДУНАЙ',en:'DANUBE',val:884,pct:2.0},
+  {uk:'АВТО',en:'ROAD',val:701,pct:1.6},
+  {uk:'ПАРОМ',en:'FERRY',val:71,pct:0.2}
+];
 function buildTransport(){
   const el=document.getElementById('transpRows');
   TRANSP.forEach(t=>{
@@ -375,19 +413,19 @@ function buildTransport(){
   });
 }
 buildTransport();
-new Chart(document.getElementById('transpDonut').getContext('2d'),{type:'doughnut',data:{labels:['Sea · POC','Railway','Danube','Road','Ferry'],datasets:[{data:[91,8,2,2,0],backgroundColor:[NAVY,'rgba(31,48,89,0.6)','rgba(31,48,89,0.4)','rgba(31,48,89,0.2)','rgba(31,48,89,0.08)'],borderWidth:2,borderColor:'#F2F2F0',hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:true,position:'bottom',labels:{font:{family:'Plus Jakarta Sans',size:9},color:SLATE,boxWidth:8,boxHeight:8,padding:8}},tooltip:{backgroundColor:NAVY,callbacks:{label:v=>`${v.label}: ${v.raw}%`}}}}});
+new Chart(document.getElementById('transpDonut').getContext('2d'),{type:'doughnut',data:{labels:['Sea · POC','Railway','Danube','Road','Ferry'],datasets:[{data:[90.7,7.6,2.0,1.6,0.2],backgroundColor:[NAVY,'rgba(31,48,89,0.6)','rgba(31,48,89,0.4)','rgba(31,48,89,0.2)','rgba(31,48,89,0.08)'],borderWidth:2,borderColor:'#F2F2F0',hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:true,position:'bottom',labels:{font:{family:'Plus Jakarta Sans',size:9},color:SLATE,boxWidth:8,boxHeight:8,padding:8}},tooltip:{backgroundColor:NAVY,callbacks:{label:v=>`${v.label}: ${v.raw}%`}}}}});
 
 // NEWS
 const NEWS=[
-  {type:'signal',src:'SUNSEEDMAN',uk_h:'Держстат фінал 2025: соняшник 10,24 млн т (−7%). Залишки олійних 1 квіт. 2026 — 2,6 млн т (−10%). Ціни квіт. $500–545/т — атипово для сезону',en_h:'Derzhstat final 2025: sunflower 10.24 MMT (−7%). Oilseed stocks 1 Apr 2026 — 2.6 MMT (−10% YoY). April prices $500–545/t — atypical for season',uk_m:'UkrAgroConsult / Sunseedman · 29 квітня 2026',en_m:'UkrAgroConsult / Sunseedman · 29 April 2026',url:'https://ukragroconsult.com/en/news/sunseed-prices-in-ukraine-have-stabilized-and-decreased-slightly-amid-increased-competition-with-argentine-products/'},
-  {type:'warn',src:'SUNSEEDMAN',uk_h:'Травень 2026: мито РФ на соняшникову олію знижується в 3,5× — тиск на ціни FOB Black Sea. Танк з олією пошкоджений у Чорноморську',en_h:'May 2026: Russia sunflower oil duty falls 3.5× — pressure on FOB Black Sea prices. Oil tank damaged in Chornomorsk after drone strike',uk_m:'UkrAgroConsult · 29 квітня 2026',en_m:'UkrAgroConsult · 29 April 2026',url:'https://ukragroconsult.com/en/news/sunseed-prices-in-ukraine-have-stabilized-and-decreased-slightly-amid-increased-competition-with-argentine-products/'},
-  {type:'warn',src:'LATIFUNDIST',uk_h:'Скандал Волиця-Агро: нестача 130+ тис. т зерна на елеваторі Київщини. Серед постраждалих — ADM, LDC, Cargill, Kernel. УЗА: трейдери призупинили закупівлі через сторонні елеватори',en_h:'Volytsia-Agro scandal: 130,000+ t grain shortage at Kyiv-region elevator. ADM, LDC, Cargill, Kernel affected. UZA: traders paused third-party elevator purchases',uk_m:'Latifundist / InVenture · березень 2026',en_m:'Latifundist / InVenture · March 2026',url:'https://inventure.com.ua/en/news/ukraine/ukrainian-farmers-may-shift-investment-focus-toward-in-house-grain-storage-after-the-volytsia-agro-scandal'},
-  {type:'warn',src:'USDA WASDE',uk_h:'WASDE травень 2026 (12 трав.): врожай пшениці України 26/27 — найменший за 3 роки. Глобальне виробництво зернових скорочується: великі експортери разом мінус 32 млн т. Запаси пшениці України 25/26 — 3,93 млн т (підвищено).',en_h:'WASDE May 2026 (May 12): Ukraine 26/27 wheat crop forecast smallest in 3 years. Global grain production tightening: major exporters collectively down 32 MMT. Ukraine 25/26 wheat ending stocks — 3.93 MMT (raised).',uk_m:'USDA WASDE-671 · 12 травня 2026',en_m:'USDA WASDE-671 · 12 May 2026',url:'https://www.usda.gov/oce/commodity/wasde/wasde0526v2.pdf'},
-  {type:'good',src:'ASAP AGRI',uk_h:'FAS USDA 26/27: соняшник +16% до 12,8 млн т, ріпак +25% до 4 млн т. Україна зберігає лідерство в олії — прогноз 5 млн т (+11%). Площі розширяться',en_h:'FAS USDA 26/27: sunflower +16% to 12.8 MMT, rapeseed +25% to 4 MMT. Ukraine keeps oil leadership — 5 MMT forecast (+11%). Area expanding',uk_m:'FAS USDA Oilseeds Annual · квітень 2026',en_m:'FAS USDA Oilseeds Annual · April 2026',url:'https://www.ofimagazine.com/news/ukraine-to-expand-sunflower-and-rapeseed-planted-areas'},
-  {type:'good',src:'LATIFUNDIST',uk_h:'FAS USDA 26/27: кукурудза 31,5 млн т, експорт +26% до 26 млн т. Ячмінь: +133% до 4,2 млн т. Пшениця: +19% до 15,5 млн т. Рекордні запаси відкривають нові можливості',en_h:'FAS USDA 26/27: corn 31.5 MMT, exports +26% to 26 MMT. Barley: +133% to 4.2 MMT. Wheat: +19% to 15.5 MMT. Record carry-over creates opportunities',uk_m:'World Grain / FAS USDA · квітень 2026',en_m:'World Grain / FAS USDA · April 2026',url:'https://www.world-grain.com/articles/22677-fas-ukraine-grain-exports-down-22'},
-  {type:'warn',src:'LATIFUNDIST',uk_h:'Удар РФ по порту Південний: виявлено розлив соняшникової олії в Чорному морі. Акваторія порту закрита. Додаткові ризики для страхування Black Sea вантажів.',en_h:'Russian strike on Pivdennyi port: sunflower oil spill detected in Black Sea. Port waters closed. Additional insurance risks for Black Sea cargo.',uk_m:'Latifundist · квітень–травень 2026',en_m:'Latifundist · April–May 2026',url:'https://latifundist.com/en/novosti'},
-  {type:'good',src:'LATIFUNDIST',uk_h:'Grain Ukraine 2026, 4–5 червня, Київ — «Новий зерновий порядок». 50+ спікерів, 500+ учасників. Теми: квоти ЄС, Sea vs Land логістика, M&A, диверсифікація ринків',en_h:'Grain Ukraine 2026, June 4–5, Kyiv — "The New Grain Order". 50+ speakers, 500+ participants. Topics: EU quotas, Sea vs Land logistics, M&A, market diversification',uk_m:'Latifundist · квітень 2026',en_m:'Latifundist · April 2026',url:'https://latifundist.com/en/novosti/70033-ogolosheno-dati-provedennya-grain-ukraine-2026?amp=1'},
-  {type:'warn',src:'ASAP AGRI',uk_h:'Туреччина 25/26: імпорт кукурудзи може впасти на ~2,5 млн т (USDA). Власне виробництво зростає, конкуренція РФ посилюється. Іспанія може повернутись через тарифи Трампа',en_h:'Turkey 25/26: corn imports may fall ~2.5 MMT (USDA). Domestic output growing, Russian competition intensifying. Spain may return due to Trump tariffs',uk_m:'Fastmarkets / ASAP Agri · січень 2026',en_m:'Fastmarkets / ASAP Agri · January 2026',url:'https://www.fastmarkets.com/insights/ukrainian-corn-exports-at-eight-year-low-as-logistics-curb-shipments-despite-competitive-prices-2026-preview/'}
+  {type:'warn',src:'УЗА',uk_h:'УЗА черв.2026: врожай 26/27 прогнозується 83,6 млн т. Потенційний експорт зерна 26/27 — 50,8 млн т (vs 42,3 млн т оцінка 25/26). Пшениця 22,8 млн т, кукурудза 32,1 млн т, соняшник 13,3 млн т.',en_h:'UZA June 2026: 26/27 crop forecast 83.6 MMT. Potential grain exports 26/27 — 50.8 MMT (vs 42.3 MMT estimate for 25/26). Wheat 22.8 MMT, corn 32.1 MMT, sunflower 13.3 MMT.',uk_m:'Українська зернова асоціація · 1 червня 2026',en_m:'Ukrainian Grain Association · 1 June 2026',url:'https://uga.ua/news/uza-eksport-zerna-v-2026-2027-mr-potentsijno-mozhe-syagnuty-50-8-mln-t-pry-vrozhayi-v-83-6-mln-t/'},
+  {type:'warn',src:'USDA GAIN',uk_h:'GAIN UP2026-0011 (FAS/Kyiv, квіт.2026): соняшникова олія 25/26 — виробництво 4,73 млн т, експорт 4,5 млн т, залишки 0,145 млн т. Extraction rate 43%. Дефіцит соняшника підштовхнув переробку сої та ріпаку.',en_h:'GAIN UP2026-0011 (FAS/Kyiv, Apr 2026): sunflower oil 25/26 — production 4.73 MMT, exports 4.5 MMT, ending stocks 0.145 MMT. Extraction rate 43%. Sunflower deficit drove soybean and rapeseed crush.',uk_m:'USDA FAS/Kyiv · квітень 2026',en_m:'USDA FAS/Kyiv · April 2026',url:'https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Oilseeds+and+Products+Annual_Kyiv_Ukraine_UP2026-0011.pdf'},
+  {type:'warn',src:'USDA WASDE',uk_h:'WASDE травень 2026: врожай пшениці України 26/27 — найменший за 3 роки. Залишки пшениці 25/26 підвищено. Глобальне виробництво зернових: великі експортери разом мінус 32 млн т.',en_h:'WASDE May 2026: Ukraine 26/27 wheat crop smallest in 3 years. 25/26 wheat ending stocks raised. Global grain production: major exporters collectively down 32 MMT.',uk_m:'USDA WASDE-671 · 12 травня 2026',en_m:'USDA WASDE-671 · 12 May 2026',url:'https://www.usda.gov/oce/commodity/wasde/wasde0526v2.pdf'},
+  {type:'warn',src:'SUNSEEDMAN',uk_h:'Мито РФ на соняшникову олію знижується в 3,5× — тиск на ціни FOB Black Sea. Держстат: соняшник 2025 — 10,24 млн т (−7%). Залишки олійних 1 квіт. 2026 — 2,6 млн т (−10%).',en_h:'Russia sunflower oil duty falls 3.5× — pressure on FOB Black Sea prices. Derzhstat: sunflower 2025 — 10.24 MMT (−7%). Oilseed stocks 1 Apr 2026 — 2.6 MMT (−10% YoY).',uk_m:'UkrAgroConsult / Sunseedman · квітень 2026',en_m:'UkrAgroConsult / Sunseedman · April 2026',url:'https://ukragroconsult.com/en/news/sunseed-prices-in-ukraine-have-stabilized-and-decreased-slightly-amid-increased-competition-with-argentine-products/'},
+  {type:'warn',src:'LATIFUNDIST',uk_h:'Скандал Волиця-Агро: нестача 130+ тис. т зерна на елеваторі Київщини. Серед постраждалих — ADM, LDC, Cargill, Kernel. УЗА: трейдери призупинили закупівлі через сторонні елеватори.',en_h:'Volytsia-Agro scandal: 130,000+ t grain shortage at Kyiv-region elevator. ADM, LDC, Cargill, Kernel affected. UZA: traders paused third-party elevator purchases.',uk_m:'Latifundist / InVenture · березень 2026',en_m:'Latifundist / InVenture · March 2026',url:'https://inventure.com.ua/en/news/ukraine/ukrainian-farmers-may-shift-investment-focus-toward-in-house-grain-storage-after-the-volytsia-agro-scandal'},
+  {type:'good',src:'FAS USDA',uk_h:'FAS USDA 26/27: соняшник +16% до 12,8 млн т, ріпак +25% до 4 млн т. Олія 26/27: 5,5 млн т (+15%). Кукурудза: 32,1 млн т, експорт 27 млн т. Площі ріпаку +11%.',en_h:'FAS USDA 26/27: sunflower +16% to 12.8 MMT, rapeseed +25% to 4 MMT. Oil 26/27: 5.5 MMT (+15%). Corn: 32.1 MMT, exports 27 MMT. Rapeseed area +11%.',uk_m:'USDA GAIN UP2026-0011 · квітень 2026',en_m:'USDA GAIN UP2026-0011 · April 2026',url:'https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Oilseeds+and+Products+Annual_Kyiv_Ukraine_UP2026-0011.pdf'},
+  {type:'warn',src:'LATIFUNDIST',uk_h:'Удар РФ по порту Південний: виявлено розлив соняшникової олії в Чорному морі. Додаткові ризики страхування Black Sea вантажів.',en_h:'Russian strike on Pivdennyi port: sunflower oil spill detected in Black Sea. Additional insurance risks for Black Sea cargo.',uk_m:'Latifundist · квітень–травень 2026',en_m:'Latifundist · April–May 2026',url:'https://latifundist.com/en/novosti'},
+  {type:'good',src:'LATIFUNDIST',uk_h:'Grain Ukraine 2026, 4–5 червня, Київ — «Новий зерновий порядок». 50+ спікерів, 500+ учасників. Теми: квоти ЄС, Sea vs Land логістика, M&A.',en_h:'Grain Ukraine 2026, June 4–5, Kyiv — "The New Grain Order". 50+ speakers, 500+ participants. Topics: EU quotas, Sea vs Land logistics, M&A.',uk_m:'Latifundist · квітень 2026',en_m:'Latifundist · April 2026',url:'https://latifundist.com/en/novosti/70033-ogolosheno-dati-provedennya-grain-ukraine-2026?amp=1'},
+  {type:'warn',src:'ASAP AGRI',uk_h:'Туреччина 25/26: імпорт кукурудзи може впасти на ~2,5 млн т (USDA). Власне виробництво зростає, конкуренція РФ посилюється. Іспанія може повернутись через тарифи Трампа.',en_h:'Turkey 25/26: corn imports may fall ~2.5 MMT (USDA). Domestic output growing, Russian competition intensifying. Spain may return due to Trump tariffs.',uk_m:'Fastmarkets / ASAP Agri · січень 2026',en_m:'Fastmarkets / ASAP Agri · January 2026',url:'https://www.fastmarkets.com/insights/ukrainian-corn-exports-at-eight-year-low-as-logistics-curb-shipments-despite-competitive-prices-2026-preview/'}
 ];
 function buildNews(){
   const el=document.getElementById('newsFeed');
@@ -398,30 +436,60 @@ function buildNews(){
 }
 buildNews();
 
-// CARRY-OVER CARDS
+// CARRY-OVER CARDS — верифіковані цифри
 const CARRY=[
-  {uk_c:'Пшениця',    en_c:'Wheat',      harvest:'24,0 млн т',uk_e:'~12,5 млн т (11,6 факт + ~0,9)',en_e:'~12.5 MMT (11.6 act + ~0.9)',uk_s:'3,9 млн т',en_s:'3.9 MMT',uk_d:'↑ +75% до 24/25 · 5,4 млн т у сховищах',en_d:'↑ +75% vs 24/25 · 5.4 MMT in storage',src:'USDA WASDE травень 2026 · Держстат · УЗА'},
-  {uk_c:'Кукурудза',  en_c:'Corn',       harvest:'31,5 млн т',uk_e:'~22 млн т (17,9 факт + ~4,1)',  en_e:'~22 MMT (17.9 act + ~4.1)',   uk_s:'~8,3 млн т',en_s:'~8.3 MMT',uk_d:'↑ Рекорд · 2 міс. до кінця сезону',en_d:'↑ Record · 2 months left',src:'УЗА · FAS USDA · розрах.'},
-  {uk_c:'Сон. олія',  en_c:'Sunfl. oil', harvest:'5,1 млн т', uk_e:'~3,8 млн т (3,5 факт + ~0,3)', en_e:'~3.8 MMT (3.5 act + ~0.3)',    uk_s:'~0,9 млн т',en_s:'~0.9 MMT',uk_d:'↓ Соняшник 10,24 млн т (Держстат)',en_d:'↓ Sunflower 10.24 MMT (Derzhstat)',src:'ASAP Agri · APK-Inform'},
-  {uk_c:'Ріпак',      en_c:'Rapeseed',   harvest:'3,3 млн т', uk_e:'~2,35 млн т (1,7 факт + ~0,7)',en_e:'~2.35 MMT (1.7 act + ~0.7)',   uk_s:'~0,7 млн т',en_s:'~0.7 MMT',uk_d:'↓ Внутрішня переробка зростає',en_d:'↓ Domestic crushing growing',src:'УЗА · ASAP Agri'},
-  {uk_c:'Ячмінь',     en_c:'Barley',     harvest:'4,9 млн т', uk_e:'~2,3 млн т (1,5 факт + ~0,8)', en_e:'~2.3 MMT (1.5 act + ~0.8)',    uk_s:'~1,1 млн т',en_s:'~1.1 MMT',uk_d:'↓ −34% · 26/27: +133% до 4,2 млн т',en_d:'↓ −34% · 26/27: +133% to 4.2 MMT',src:'УЗА · FAS USDA квіт.2026'}
+  {uk_c:'Пшениця',en_c:'Wheat',
+   harvest:'22,5 млн т',
+   uk_e:'~13,5 млн т (12,3 факт + ~1,2)',en_e:'~13.5 MMT (12.3 act + ~1.2)',
+   uk_s:'2,43 млн т',en_s:'2.43 MMT',
+   uk_d:'0,93+22,5−7,5−13,5=2,43 · USDA carry-in+УЗА черв.2026',
+   en_d:'0.93+22.5−7.5−13.5=2.43 · USDA carry-in+UZA Jun 2026',
+   src:'USDA WASDE трав.2026 · УЗА черв.2026'},
+  {uk_c:'Кукурудза',en_c:'Corn',
+   harvest:'31,1 млн т',
+   uk_e:'~22 млн т (19,1 факт + ~2,9)',en_e:'~22 MMT (19.1 act + ~2.9)',
+   uk_s:'2,85 млн т',en_s:'2.85 MMT',
+   uk_d:'0,95+31,1−7,2−22,0=2,85 · USDA carry-in+УЗА черв.2026',
+   en_d:'0.95+31.1−7.2−22.0=2.85 · USDA carry-in+UZA Jun 2026',
+   src:'USDA WASDE · УЗА черв.2026'},
+  {uk_c:'Сон. олія',en_c:'Sunfl. oil',
+   harvest:'4,73 млн т',
+   uk_e:'4,5 млн т (3,86 факт + ~0,64)',en_e:'4.5 MMT (3.86 act + ~0.64)',
+   uk_s:'0,145 млн т',en_s:'0.145 MMT',
+   uk_d:'0,383+4,730−0,468−4,500=0,145 · GAIN UP2026-0011 пряма таблиця',
+   en_d:'0.383+4.730−0.468−4.500=0.145 · GAIN UP2026-0011 direct table',
+   src:'USDA GAIN UP2026-0011 FAS/Kyiv квіт.2026'},
+  {uk_c:'Ріпак',en_c:'Rapeseed',
+   harvest:'3,2 млн т',
+   uk_e:'2,1 млн т (1,68 факт + ~0,42)',en_e:'2.1 MMT (1.68 act + ~0.42)',
+   uk_s:'0,058 млн т',en_s:'0.058 MMT',
+   uk_d:'0,059+3,203−1,104−2,100=0,058 · GAIN UP2026-0011 пряма таблиця',
+   en_d:'0.059+3.203−1.104−2.100=0.058 · GAIN UP2026-0011 direct table',
+   src:'USDA GAIN UP2026-0011 FAS/Kyiv квіт.2026'},
+  {uk_c:'Ячмінь',en_c:'Barley',
+   harvest:'4,9 млн т',
+   uk_e:'~1,6 млн т (1,5 факт + ~0,1)',en_e:'~1.6 MMT (1.5 act + ~0.1)',
+   uk_s:'2,10 млн т',en_s:'2.10 MMT',
+   uk_d:'1,30+4,9−2,5−1,6=2,10 · USDA carry-in+УЗА черв.2026',
+   en_d:'1.30+4.9−2.5−1.6=2.10 · USDA carry-in+UZA Jun 2026',
+   src:'USDA WASDE · УЗА черв.2026'},
 ];
 function buildCarry(){
   const el=document.getElementById('carryCards'), L=lang;
   CARRY.forEach(c=>{
-    const eL=L==='uk'?'Експорт':'Export', sL=L==='uk'?'Залишок':'Ending stock', hL=L==='uk'?'врожай 2025':'crop 2025';
+    const eL=L==='uk'?'Експорт':'Export', sL=L==='uk'?'Залишок':'Ending stock', hL=L==='uk'?'вир-во/production':'production';
     el.innerHTML+=`<div class="carry-card"><div class="carry-crop">${L==='uk'?c.uk_c:c.en_c}</div><div class="carry-bar"></div><div class="carry-prod">${c.harvest} <span class="carry-unit">${hL}</span></div><div class="carry-row"><span class="carry-key">${eL}</span><span class="carry-num">${L==='uk'?c.uk_e:c.en_e}</span></div><div class="carry-row"><span class="carry-key">${sL}</span><span class="carry-num">${L==='uk'?c.uk_s:c.en_s}</span></div><div class="carry-delta">${L==='uk'?c.uk_d:c.en_d}</div><div class="carry-src">${c.src}</div></div>`;
   });
 }
 buildCarry();
 
-// BALANCE CHART
+// BALANCE CHART — верифіковані цифри
 new Chart(document.getElementById('balChart').getContext('2d'),{type:'bar',data:{
   labels:['Пшениця','Кукурудза','Сон.олія','Ріпак','Ячмінь'],
   datasets:[
-    {label:'Виробництво',data:[24.0,31.5,5.1,3.3,4.9],backgroundColor:NAVY,borderRadius:3,borderSkipped:false},
-    {label:'Експорт',    data:[13.5,22.0,3.8,2.35,2.3],backgroundColor:N45, borderRadius:3,borderSkipped:false},
-    {label:'Залишок',    data:[3.93,8.3,0.9,0.7,1.1],   backgroundColor:N20, borderRadius:3,borderSkipped:false}
+    {label:'Виробництво',data:[22.5,31.1,4.73,3.20,4.9],backgroundColor:NAVY,borderRadius:3,borderSkipped:false},
+    {label:'Експорт',    data:[13.5,22.0,4.50,2.10,1.6],backgroundColor:N45, borderRadius:3,borderSkipped:false},
+    {label:'Залишок',    data:[2.43,2.85,0.145,0.058,2.10],backgroundColor:N20,borderRadius:3,borderSkipped:false}
   ]},options:{responsive:true,maintainAspectRatio:false,
   plugins:{legend:{display:false},tooltip:{backgroundColor:NAVY,titleFont:{family:'Plus Jakarta Sans',size:11},bodyFont:{family:'Plus Jakarta Sans',size:11},callbacks:{label:v=>`${v.dataset.label}: ${v.raw} млн т`}}},
   scales:{x:{grid:{display:false},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},maxRotation:0}},y:{grid:{color:'rgba(31,48,89,0.06)'},ticks:{color:SLATE,font:{family:'Plus Jakarta Sans',size:9},callback:v=>v+'М'}}}}});
